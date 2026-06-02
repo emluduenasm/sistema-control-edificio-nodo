@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW (Evaluation Version) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="10.2441in" height="5.5197in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1586.91 855.06"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:1.22;stroke-miterlimit:22.9256}
+    .fil1 {fill:black}
+    .fil0 {fill:#CCCCCC}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <polygon id="base_pb_oeste" class="fil0 str0" points="427.53,854.44 1281.36,854.44 1281.36,488.51 1586.3,488.51 1586.3,365.57 1586.3,364.3 1586.3,184.99 1586.3,1.88 1586.3,0.61 1281.36,0.61 1281.36,1.88 789.52,1.88 789.52,122.59 427.53,122.59 0.61,122.59 0.61,854.44 "/>
+  <polygon id="laboratorio_pb_oeste" class="fil0 str0" points="427.53,488.51 427.53,854.44 793.45,854.44 793.45,854.45 1281.36,854.45 1281.36,854.44 1281.36,488.51 1281.36,427.53 793.45,427.53 793.45,488.51 "/>
+  <rect id="oficina_policia_pb_oeste" class="fil0 str0" transform="matrix(0 -3.70813E-001 0.267952 0 789.518 365.571)" width="980.8" height="980.8"/>
+  <rect id="deposito_laboratorio_pb_oeste" class="fil0 str0" transform="matrix(0 -1.85406E-001 0.167321 0 1052.33 182.457)" width="980.8" height="980.8"/>
+  <rect id="cocina_pb_oeste" class="fil0 str0" transform="matrix(0 -1.84114E-001 0.167321 0 1052.33 364.304)" width="980.8" height="980.8"/>
+  <rect id="ascensor_pb_oeste" class="fil1 str0" transform="matrix(0 -2.25092E-001 0.349687 0 552.652 365.571)" width="677.37" height="677.37"/>
+  <rect id="sanitarios_adaptados_pb_oeste" class="fil0 str0" transform="matrix(0 -4.37923E-001 1.07512 0 1281.36 489.782)" width="283.63" height="283.63"/>
+  <rect id="sanitarios_hombres_pb_oeste" class="fil0 str0" transform="matrix(0 -6.45601E-001 1.07512 0 1281.36 184.992)" width="283.63" height="283.63"/>
+  <rect id="sanitarios_mujeres_pb_oeste" class="fil0 str0" transform="matrix(0 -6.36662E-001 1.07512 0 1281.36 365.571)" width="283.63" height="283.63"/>
+  <rect id="recepcion_pb_oeste" class="fil0" transform="matrix(0 -1.66769E+000 -9.72819E-001 0 427.526 854.443)" width="438.84" height="438.84"/>
+  <polygon id="pasillos_pb_oeste" class="fil0" points="1281.36,427.53 1281.36,365.57 1281.36,364.3 1281.36,184.99 1281.36,1.88 1216.43,1.88 1216.43,183.72 1216.43,364.3 1216.43,365.57 789.52,365.57 552.65,365.57 552.65,213.1 789.52,213.1 789.52,122.59 427.53,122.59 427.53,488.51 793.45,488.51 793.45,427.53 "/>
+ </g>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW (Evaluation Version) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="16.3754in" height="5.51969in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 11198.38 3774.67"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:5.38;stroke-miterlimit:22.9256}
+    .fil2 {fill:none}
+    .fil1 {fill:black}
+    .fil3 {fill:#666666}
+    .fil0 {fill:#CCCCCC}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <polygon id="base_ep_este" class="fil0 str0" points="5594.3,3771.97 9311.05,3771.97 11195.69,3771.97 11195.69,1887.33 11195.69,541.16 9311.05,541.16 5594.3,541.16 5594.3,2.7 2425.8,2.7 1825.02,2.7 2.69,2.7 2.69,1887.33 1772.49,1887.33 1772.49,3771.97 1825.02,3771.97 "/>
+  <rect id="sala_de_maquinas_ep_este" class="fil0 str0" transform="matrix(0 -6.30259E-001 0.315129 0 2.69234 1887.34)" width="2990.27" height="2990.27"/>
+  <rect id="desposito_ep_este" class="fil0 str0" transform="matrix(0 -2.46497E-001 0.495203 0 945.012 739.784)" width="2990.27" height="2990.27"/>
+  <rect id="sanitarios_mujeres_ep_este" class="fil0 str0" transform="matrix(0 -2.46497E-001 0.157565 0 1416.17 1887.34)" width="2990.27" height="2990.27"/>
+  <rect id="sanitarios_hombres_ep_este" class="fil0 str0" transform="matrix(0 -2.46497E-001 0.157565 0 945.012 1887.34)" width="2990.27" height="2990.27"/>
+  <rect id="ascensor_ep_este" class="fil1 str0" transform="matrix(0 -2.25092E-001 0.349687 0 4226.88 1486.79)" width="2990.27" height="2990.27"/>
+  <rect id="recepcion_ep_este" class="fil1 str0" transform="matrix(0 -5.15014E-001 0.39361 0 9311.05 3771.97)" width="4788.09" height="4788.09"/>
+  <path id="espacio_coworking_ep_este" class="fil2 str0" d="M5594.3 3771.97l3716.75 0 0 -2465.93 0 0 0 -764.88 -3716.75 0 0 -538.47 -3168.5 0 0 737.09 -1480.79 0 0 410.46 471.16 0 471.16 0 0 737.09 -114.84 0 0 1884.64 52.54 0 3769.28 0zm-1367.42 -2958.27l0 673.09 1045.66 0 0 -673.09 -1045.66 0z"/>
+  <rect id="escalera_recepcion_ep_este" class="fil3" x="9311.05" y="541.16" width="1884.64" height="764.88"/>
+ </g>
+</svg>
