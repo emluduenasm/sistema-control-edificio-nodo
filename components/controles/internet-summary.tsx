@@ -14,9 +14,9 @@ export function InternetSummary() {
 
 function SummaryCard({ title, value }: { title: string; value: string }) {
   return (
-    <div className="rounded-lg border border-nodo-line bg-slate-50 p-4">
-      <p className="text-sm text-slate-500">{title}</p>
-      <p className="mt-2 text-2xl font-semibold">{value}</p>
+    <div className="rounded-[20px] border border-border/80 bg-[#fbfeff] p-4 shadow-panel">
+      <p className="text-sm font-medium text-[#6a88a5]">{title}</p>
+      <p className="mt-2 text-2xl font-semibold text-[#173863]">{value}</p>
     </div>
   );
 }

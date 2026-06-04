@@ -3,7 +3,43 @@
 @tailwind utilities;
 
 :root {
+  --background: 198 100% 96.7%;
+  --foreground: 218 54% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 218 54% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 218 54% 18%;
+  --primary: 208 95% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 205 71% 96%;
+  --secondary-foreground: 215 53% 28%;
+  --muted: 198 67% 95%;
+  --muted-foreground: 211 25% 46%;
+  --accent: 208 95% 58%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 199 86% 85%;
+  --input: 199 86% 85%;
+  --ring: 203 91% 61%;
+  --radius: 1.1rem;
   color-scheme: light;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 * {
@@ -17,8 +53,7 @@ body {
 
 body {
   margin: 0;
-  background: #f5f7fb;
-  color: #162033;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
 }
 
 a {

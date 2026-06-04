@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { PlantaViewer } from "@/components/planta/planta-viewer";
+import { loadSvgMarkup } from "@/lib/svg/load-svg";
 import { getPlantaSvgPath, isAla, isCapaActiva, isPlanta } from "@/lib/svg/planta-map";
 import type { CapaActiva } from "@/types/building";
 
@@ -11,6 +12,7 @@ type PlantaPageProps = {
   }>;
   searchParams?: Promise<{
     capa?: string | string[];
+    sector?: string | string[];
   }>;
 };
 
@@ -24,9 +26,19 @@ export default async function PlantaPage({ params, searchParams }: PlantaPagePro
 
   const capaParam = resolvedSearchParams?.capa;
   const capaActiva: CapaActiva = isCapaActiva(capaParam) ? capaParam : "luces";
+  const selectedId =
+    typeof resolvedSearchParams?.sector === "string" ? resolvedSearchParams.sector : null;
   const svgPath = getPlantaSvgPath(resolvedParams.ala, resolvedParams.planta);
 
   if (!svgPath) {
+    notFound();
+  }
+
+  let svgMarkup: string;
+
+  try {
+    svgMarkup = await loadSvgMarkup(svgPath);
+  } catch {
     notFound();
   }
 
@@ -35,6 +47,8 @@ export default async function PlantaPage({ params, searchParams }: PlantaPagePro
       ala={resolvedParams.ala}
       planta={resolvedParams.planta}
       capaActiva={capaActiva}
+      selectedId={selectedId}
+      svgMarkup={svgMarkup}
     />
   );
 }

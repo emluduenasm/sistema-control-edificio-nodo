@@ -6,17 +6,17 @@ const values = [
 
 export function EnvironmentOverlayChart() {
   return (
-    <div className="rounded-lg border border-nodo-line bg-white p-5 shadow-sm">
-      <h2 className="font-semibold">Ambiente</h2>
+    <div className="rounded-[22px] border border-border bg-white p-5 shadow-panel">
+      <h2 className="font-semibold text-[#173863]">Ambiente</h2>
       <div className="mt-5 grid grid-cols-3 gap-3">
         {values.map((item) => (
-          <div key={item.label} className="rounded-lg bg-slate-50 p-4 text-center">
-            <p className="text-sm text-slate-500">{item.label}</p>
-            <p className="mt-2 text-2xl font-semibold">{item.value}</p>
+          <div key={item.label} className="rounded-[18px] bg-[#f5fbff] p-4 text-center">
+            <p className="text-sm text-[#7391aa]">{item.label}</p>
+            <p className="mt-2 text-2xl font-semibold text-[#173863]">{item.value}</p>
           </div>
         ))}
       </div>
-      <div className="mt-5 h-28 rounded-lg bg-gradient-to-r from-emerald-100 via-amber-100 to-rose-100" />
+      <div className="mt-5 h-28 rounded-[18px] bg-gradient-to-r from-[#dff7ea] via-[#fff5d8] to-[#ffe3ea]" />
     </div>
   );
 }

@@ -19,83 +19,83 @@ viewBox="0 0 11198.38 3774.66"
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
   <path id="base_pb_este" class="fil0 str0" d="M11195.69 3771.97l0 -3230.81 -5601.39 0 0 -538.47 -3168.5 0 -600.78 0 -1822.33 0 0 1884.64 1769.8 0 0 1884.64c3141.07,0 6282.13,0 9423.2,0z"/>
-  <rect id="aula1_pb_este" class="fil0 str0" transform="matrix(0 -6.41187E-001 0.641187 0 7426.41 3771.97)" width="2939.3" height="2939.3"/>
-  <rect id="aula2_pb_este" class="fil0 str0" transform="matrix(0 -6.41187E-001 0.641187 0 5541.77 3771.97)" width="2939.3" height="2939.3"/>
-  <rect id="aula3_pb_este" class="fil0 str0" transform="matrix(0 -6.41187E-001 0.641187 0 3657.13 3771.97)" width="2939.3" height="2939.3"/>
-  <rect id="aula4_pb_este" class="fil0 str0" transform="matrix(0 -6.41187E-001 0.641187 0 1772.49 3771.97)" width="2939.3" height="2939.3"/>
-  <rect id="sanitarios_mujeres_pb_este" class="fil0 str0" transform="matrix(0 -2.46024E-001 0.315129 0 2.69234 1476.88)" width="2990.27" height="2990.27"/>
-  <rect id="sanitarios_adaptados_pb_este" class="fil1 str0" transform="matrix(0 -1.37264E-001 0.315129 0 2.69234 1887.33)" width="2990.27" height="2990.27"/>
-  <rect id="sala_profes_pb_este" class="fil0 str0" transform="matrix(0 -2.46498E-001 0.315129 0 1483.48 1476.88)" width="2990.27" height="2990.27"/>
-  <rect id="bedelia_pb_este" class="fil0 str0" transform="matrix(0 -2.46497E-001 0.315129 0 1483.48 739.782)" width="2990.27" height="2990.27"/>
+  <rect id="aula1_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -6.41187E-001 0.641187 0 7426.41 3771.97)" width="2939.3" height="2939.3"/>
+  <rect id="aula2_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -6.41187E-001 0.641187 0 5541.77 3771.97)" width="2939.3" height="2939.3"/>
+  <rect id="aula3_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -6.41187E-001 0.641187 0 3657.13 3771.97)" width="2939.3" height="2939.3"/>
+  <rect id="aula4_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -6.41187E-001 0.641187 0 1772.49 3771.97)" width="2939.3" height="2939.3"/>
+  <rect id="baños_mujeres_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -2.46024E-001 0.315129 0 2.69234 1476.88)" width="2990.27" height="2990.27"/>
+  <rect id="baños_adaptados_pb_este" class="fil1 str0" data-kind="area" data-active-area="true" transform="matrix(0 -1.37264E-001 0.315129 0 2.69234 1887.33)" width="2990.27" height="2990.27"/>
+  <rect id="sala_profes_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -2.46498E-001 0.315129 0 1483.48 1476.88)" width="2990.27" height="2990.27"/>
+  <rect id="bedelia_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -2.46497E-001 0.315129 0 1483.48 739.782)" width="2990.27" height="2990.27"/>
   <rect id="ascensor_pb_este" class="fil2 str0" transform="matrix(0 -2.25092E-001 0.349687 0 4226.88 1476.88)" width="2990.27" height="2990.27"/>
-  <rect id="sanitarios_hombres_pb_este" class="fil0 str0" x="2.69" y="2.69" width="942.32" height="738.51"/>
-  <path id="pasillos_pb_este" class="fil1" d="M9311.05 541.16l-3716.75 0 0 -538.47 -3168.5 0 0 737.09 0 737.09 -942.32 0 0 -737.09 0 -737.09 -538.47 0 0 738.51 0 735.68 0 410.46 827.48 0 1884.64 0 1884.64 0 1884.64 0 1884.64 0 0 -581.29 0 0 0 -764.88zm-5084.17 262.63l0 673.09 1045.66 0 0 -673.09 -1045.66 0z"/>
-  <rect id="recepcion_pb_este" class="fil0" transform="matrix(0 -5.15014E-001 0.39361 0 9311.05 3771.97)" width="4788.09" height="4788.09"/>
+  <rect id="baños_hombres_pb_este" class="fil0 str0" data-kind="area" data-active-area="true" x="2.69" y="2.69" width="942.32" height="738.51"/>
+  <path id="pasillos_pb_este" class="fil1" data-kind="area" data-active-area="true" d="M9311.05 541.16l-3716.75 0 0 -538.47 -3168.5 0 0 737.09 0 737.09 -942.32 0 0 -737.09 0 -737.09 -538.47 0 0 738.51 0 735.68 0 410.46 827.48 0 1884.64 0 1884.64 0 1884.64 0 1884.64 0 0 -581.29 0 0 0 -764.88zm-5084.17 262.63l0 673.09 1045.66 0 0 -673.09 -1045.66 0z"/>
+  <rect id="recepcion_pb_este" class="fil0" data-kind="area" data-active-area="true" transform="matrix(0 -5.15014E-001 0.39361 0 9311.05 3771.97)" width="4788.09" height="4788.09"/>
   <rect id="escalera_recepcion_pb_este" class="fil3" x="9311.05" y="541.16" width="1884.64" height="764.88"/>
-  <rect id="pc9_aula1" class="fil0 str0" x="7706.3" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc10_aula1" class="fil0 str0" x="7706.3" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc11_aula1" class="fil0 str0" x="7706.3" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc12_aula1" class="fil0 str0" x="7706.3" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc5_aula1" class="fil0 str0" x="8056.31" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc6_aula1" class="fil0 str0" x="8056.31" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc7_aula1" class="fil0 str0" x="8056.31" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc8_aula1" class="fil0 str0" x="8056.31" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc1_aula1" class="fil0 str0" x="8406.31" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc2_aula1" class="fil0 str0" x="8406.31" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc3_aula1" class="fil0 str0" x="8406.31" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc4_aula1" class="fil0 str0" x="8406.31" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc_profe_aula1" class="fil0 str0" x="8895.86" y="3022.83" width="161.54" height="161.54"/>
-  <rect id="pc17_aula2" class="fil0 str0" x="5823.3" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc18_aula2" class="fil0 str0" x="5823.3" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc19_aula2" class="fil0 str0" x="5823.3" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc20_aula2" class="fil0 str0" x="5823.3" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc9_aula2" class="fil0 str0" x="6173.3" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc10_aula2" class="fil0 str0" x="6173.3" y="2183.49" width="161.54" height="161.54"/>
-  <rect id="pc11_aula2" class="fil0 str0" x="6173.3" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc12_aula2" class="fil0 str0" x="6173.3" y="2560.42" width="161.54" height="161.54"/>
-  <rect id="pc13_aula2" class="fil0 str0" x="6173.3" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc14_aula2" class="fil0 str0" x="6173.3" y="3125.81" width="161.54" height="161.54"/>
-  <rect id="pc15_aula2" class="fil0 str0" x="6173.3" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc16_aula2" class="fil0 str0" x="6173.3" y="3502.74" width="161.54" height="161.54"/>
-  <rect id="pc1_aula2" class="fil0 str0" x="6523.3" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc2_aula2" class="fil0 str0" x="6523.3" y="2183.49" width="161.54" height="161.54"/>
-  <rect id="pc3_aula2" class="fil0 str0" x="6523.3" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc4_aula2" class="fil0 str0" x="6523.3" y="2560.42" width="161.54" height="161.54"/>
-  <rect id="pc5_aula2" class="fil0 str0" x="6523.3" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc6_aula2" class="fil0 str0" x="6523.3" y="3125.81" width="161.54" height="161.54"/>
-  <rect id="pc7_aula2" class="fil0 str0" x="6523.3" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc8_aula2" class="fil0 str0" x="6523.3" y="3502.74" width="161.54" height="161.54"/>
-  <rect id="pc17_aula3" class="fil0 str0" x="3967.18" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc18_aula3" class="fil0 str0" x="3967.18" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc19_aula3" class="fil0 str0" x="3967.18" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc20_aula3" class="fil0 str0" x="3967.18" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc9_aula3" class="fil0 str0" x="4317.18" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc10_aula3" class="fil0 str0" x="4317.18" y="2183.49" width="161.54" height="161.54"/>
-  <rect id="pc11_aula3" class="fil0 str0" x="4317.18" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc12_aula3" class="fil0 str0" x="4317.18" y="2560.42" width="161.54" height="161.54"/>
-  <rect id="pc13_aula3" class="fil0 str0" x="4317.18" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc14_aula3" class="fil0 str0" x="4317.18" y="3125.81" width="161.54" height="161.54"/>
-  <rect id="pc15_aula3" class="fil0 str0" x="4317.18" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc16_aula3" class="fil0 str0" x="4317.18" y="3502.74" width="161.54" height="161.54"/>
-  <rect id="pc1_aula3" class="fil0 str0" x="4667.18" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc2_aula3" class="fil0 str0" x="4667.18" y="2183.49" width="161.54" height="161.54"/>
-  <rect id="pc3_aula3" class="fil0 str0" x="4667.18" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc4_aula3" class="fil0 str0" x="4667.18" y="2560.42" width="161.54" height="161.54"/>
-  <rect id="pc5_aula3" class="fil0 str0" x="4667.18" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc6_aula3" class="fil0 str0" x="4667.18" y="3125.81" width="161.54" height="161.54"/>
-  <rect id="pc7_aula3" class="fil0 str0" x="4667.18" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc8_aula3" class="fil0 str0" x="4667.18" y="3502.74" width="161.54" height="161.54"/>
-  <rect id="pc9_aula4" class="fil0 str0" x="2090.08" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc10_aula4" class="fil0 str0" x="2090.08" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc11_aula4" class="fil0 str0" x="2090.08" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc12_aula4" class="fil0 str0" x="2090.08" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc5_aula4" class="fil0 str0" x="2440.08" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc6_aula4" class="fil0 str0" x="2440.08" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc7_aula4" class="fil0 str0" x="2440.08" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc8_aula4" class="fil0 str0" x="2440.08" y="3314.27" width="161.54" height="161.54"/>
-  <rect id="pc1_aula4" class="fil0 str0" x="2790.09" y="1995.02" width="161.54" height="161.54"/>
-  <rect id="pc2_aula4" class="fil0 str0" x="2790.09" y="2371.95" width="161.54" height="161.54"/>
-  <rect id="pc3_aula4" class="fil0 str0" x="2790.09" y="2937.34" width="161.54" height="161.54"/>
-  <rect id="pc4_aula4" class="fil0 str0" x="2790.09" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc9_aula1" class="fil0 str0" data-kind="computadora" x="7706.3" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc10_aula1" class="fil0 str0" data-kind="computadora" x="7706.3" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc11_aula1" class="fil0 str0" data-kind="computadora" x="7706.3" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc12_aula1" class="fil0 str0" data-kind="computadora" x="7706.3" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc5_aula1" class="fil0 str0" data-kind="computadora" x="8056.31" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc6_aula1" class="fil0 str0" data-kind="computadora" x="8056.31" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc7_aula1" class="fil0 str0" data-kind="computadora" x="8056.31" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc8_aula1" class="fil0 str0" data-kind="computadora" x="8056.31" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc1_aula1" class="fil0 str0" data-kind="computadora" x="8406.31" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc2_aula1" class="fil0 str0" data-kind="computadora" x="8406.31" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc3_aula1" class="fil0 str0" data-kind="computadora" x="8406.31" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc4_aula1" class="fil0 str0" data-kind="computadora" x="8406.31" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc_profe_aula1" class="fil0 str0" data-kind="computadora" x="8895.86" y="3022.83" width="161.54" height="161.54"/>
+  <rect id="pc17_aula2" class="fil0 str0" data-kind="computadora" x="5823.3" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc18_aula2" class="fil0 str0" data-kind="computadora" x="5823.3" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc19_aula2" class="fil0 str0" data-kind="computadora" x="5823.3" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc20_aula2" class="fil0 str0" data-kind="computadora" x="5823.3" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc9_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc10_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="2183.49" width="161.54" height="161.54"/>
+  <rect id="pc11_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc12_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="2560.42" width="161.54" height="161.54"/>
+  <rect id="pc13_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc14_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="3125.81" width="161.54" height="161.54"/>
+  <rect id="pc15_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc16_aula2" class="fil0 str0" data-kind="computadora" x="6173.3" y="3502.74" width="161.54" height="161.54"/>
+  <rect id="pc1_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc2_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="2183.49" width="161.54" height="161.54"/>
+  <rect id="pc3_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc4_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="2560.42" width="161.54" height="161.54"/>
+  <rect id="pc5_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc6_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="3125.81" width="161.54" height="161.54"/>
+  <rect id="pc7_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc8_aula2" class="fil0 str0" data-kind="computadora" x="6523.3" y="3502.74" width="161.54" height="161.54"/>
+  <rect id="pc17_aula3" class="fil0 str0" data-kind="computadora" x="3967.18" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc18_aula3" class="fil0 str0" data-kind="computadora" x="3967.18" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc19_aula3" class="fil0 str0" data-kind="computadora" x="3967.18" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc20_aula3" class="fil0 str0" data-kind="computadora" x="3967.18" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc9_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc10_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="2183.49" width="161.54" height="161.54"/>
+  <rect id="pc11_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc12_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="2560.42" width="161.54" height="161.54"/>
+  <rect id="pc13_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc14_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="3125.81" width="161.54" height="161.54"/>
+  <rect id="pc15_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc16_aula3" class="fil0 str0" data-kind="computadora" x="4317.18" y="3502.74" width="161.54" height="161.54"/>
+  <rect id="pc1_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc2_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="2183.49" width="161.54" height="161.54"/>
+  <rect id="pc3_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc4_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="2560.42" width="161.54" height="161.54"/>
+  <rect id="pc5_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc6_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="3125.81" width="161.54" height="161.54"/>
+  <rect id="pc7_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc8_aula3" class="fil0 str0" data-kind="computadora" x="4667.18" y="3502.74" width="161.54" height="161.54"/>
+  <rect id="pc9_aula4" class="fil0 str0" data-kind="computadora" x="2090.08" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc10_aula4" class="fil0 str0" data-kind="computadora" x="2090.08" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc11_aula4" class="fil0 str0" data-kind="computadora" x="2090.08" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc12_aula4" class="fil0 str0" data-kind="computadora" x="2090.08" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc5_aula4" class="fil0 str0" data-kind="computadora" x="2440.08" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc6_aula4" class="fil0 str0" data-kind="computadora" x="2440.08" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc7_aula4" class="fil0 str0" data-kind="computadora" x="2440.08" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc8_aula4" class="fil0 str0" data-kind="computadora" x="2440.08" y="3314.27" width="161.54" height="161.54"/>
+  <rect id="pc1_aula4" class="fil0 str0" data-kind="computadora" x="2790.09" y="1995.02" width="161.54" height="161.54"/>
+  <rect id="pc2_aula4" class="fil0 str0" data-kind="computadora" x="2790.09" y="2371.95" width="161.54" height="161.54"/>
+  <rect id="pc3_aula4" class="fil0 str0" data-kind="computadora" x="2790.09" y="2937.34" width="161.54" height="161.54"/>
+  <rect id="pc4_aula4" class="fil0 str0" data-kind="computadora" x="2790.09" y="3314.27" width="161.54" height="161.54"/>
  </g>
 </svg>

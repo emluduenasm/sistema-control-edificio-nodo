@@ -19,12 +19,12 @@ viewBox="0 0 1586.91 855.22"
   <metadata id="CorelCorpID_0Corel-Layer"/>
   <polygon id="base_ep_oeste" class="fil0 str0" points="427.53,854.44 1281.36,854.44 1281.36,488.51 1586.3,488.51 1586.3,0.61 1281.36,0.61 1281.36,1.88 789.52,1.88 789.52,122.59 427.53,122.59 0.61,122.59 0.61,854.44 "/>
   <rect id="sala_de_maquinas_ep_oeste" class="fil0 str0" transform="matrix(0 -4.97455E-001 0.310909 0 1281.36 488.514)" width="980.8" height="980.8"/>
-  <rect id="sanitarios_mujeres_ep_oeste" class="fil0 str0" transform="matrix(0 -1.9195E-001 0.122946 0 1160.77 188.875)" width="980.8" height="980.8"/>
+  <rect id="baños_mujeres_ep_oeste" class="fil0 str0" transform="matrix(0 -1.9195E-001 0.122946 0 1160.77 188.875)" width="980.8" height="980.8"/>
   <rect id="recepcion_ep_oeste" class="fil1 str0" transform="matrix(0 -1.66769E+000 -9.72819E-001 0 427.526 854.607)" width="438.84" height="438.84"/>
   <rect id="ascensor_ep_oeste" class="fil1" transform="matrix(0 -2.25092E-001 0.270111 0 606.554 365.571)" width="677.37" height="677.37"/>
   <polygon id="oficina_zamboni_ep_oeste" class="fil0 str0" points="854.44,300.25 854.44,635.61 1281.36,635.61 1281.36,488.51 1160.77,488.51 1160.77,300.25 "/>
   <rect id="oficina_modernizacion_ep_oeste" class="fil0 str0" transform="matrix(0 -4.33609E-001 0.845899 0 854.442 854.446)" width="504.69" height="504.69"/>
-  <rect id="sanitarios_hombres_ep_oeste" class="fil0 str0" transform="matrix(0 -1.9195E-001 0.122946 0 1160.77 488.514)" width="980.8" height="980.8"/>
+  <rect id="baños_hombres_ep_oeste" class="fil0 str0" transform="matrix(0 -1.9195E-001 0.122946 0 1160.77 488.514)" width="980.8" height="980.8"/>
   <path id="pasillos_ep_oeste" class="fil2 str0" d="M854.44 300.25l306.33 0 120.59 0 0 -111.37 -120.59 0 0 -187 -371.25 0 0 120.71 -361.99 0c0,0 0,0 0,0.16l0 177.5 179.03 0 0 -87.15 182.96 0 0 87.15 64.92 0z"/>
   <polygon id="oficina_desarrolladores_ep_oeste" class="fil0 str0" points="854.44,300.25 789.52,300.25 789.52,365.57 606.55,365.57 606.55,300.25 427.53,300.25 427.53,854.61 854.44,854.61 "/>
  </g>
