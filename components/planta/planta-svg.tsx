@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 import { usePlantaUi } from "@/components/layout/planta-ui-context";
+import type { NetworkSignalQuality } from "@/lib/network/network-status";
 import {
   applyLayerVisibilityToSvgMarkup,
   extractActiveAreaSvgIds,
@@ -30,24 +31,61 @@ const layerStyles: Record<
   { idleFill: string; idleStroke: string; activeFill: string; activeStroke: string }
 > = {
   luces: {
-    idleFill: "rgba(255, 226, 122, 0.28)",
+    idleFill: "#f6db63",
     idleStroke: "#d7a100",
-    activeFill: "rgba(255, 208, 78, 0.52)",
+    activeFill: "#e0ae00",
     activeStroke: "#b98500",
   },
   aire: {
-    idleFill: "rgba(118, 222, 180, 0.24)",
+    idleFill: "#94e0b8",
     idleStroke: "#27a36d",
-    activeFill: "rgba(86, 205, 159, 0.46)",
+    activeFill: "#59c98d",
     activeStroke: "#15885a",
   },
   internet: {
-    idleFill: "rgba(102, 195, 255, 0.24)",
+    idleFill: "#8fd3ff",
     idleStroke: "#2b9ee8",
-    activeFill: "rgba(66, 184, 255, 0.48)",
+    activeFill: "#49b5ff",
     activeStroke: "#0b84d8",
   },
 };
+
+const opaqueLayerFills: Record<
+  CapaActiva,
+  { idleFill: string; activeFill: string; offFill: string; idleOpacity: string; offOpacity: string }
+> = {
+  luces: {
+    idleFill: "#f6db63",
+    activeFill: "#e0ae00",
+    offFill: "#cf6f6f",
+    idleOpacity: "1",
+    offOpacity: "1",
+  },
+  aire: {
+    idleFill: "#94e0b8",
+    activeFill: "#59c98d",
+    offFill: "#94e0b8",
+    idleOpacity: "0.94",
+    offOpacity: "0.94",
+  },
+  internet: {
+    idleFill: "#8fd3ff",
+    activeFill: "#49b5ff",
+    offFill: "#8fd3ff",
+    idleOpacity: "0.94",
+    offOpacity: "0.94",
+  },
+};
+
+function isInternetAreaAllowed(id: string) {
+  return !/(^pasillos_|pasillos_|ba.*os_|sanitarios_)/i.test(id);
+}
+
+function getPcShortLabel(id: string) {
+  const match = id.match(/^pc(\d+)(?:_|$)/i);
+
+  return match?.[1] ?? null;
+}
 
 export function PlantaSvg({
   ala,
@@ -61,6 +99,7 @@ export function PlantaSvg({
   const router = useRouter();
   const pathname = usePathname();
   const { lightStates } = usePlantaUi();
+  const [liveInternetSignals, setLiveInternetSignals] = useState<Record<string, NetworkSignalQuality>>({});
 
   const allInteractiveIds = useMemo(() => {
     if (!svgMarkup.trim()) {
@@ -89,7 +128,15 @@ export function PlantaSvg({
   );
 
   const resolvedLayerIds = useMemo(
-    () => Array.from(new Set([...getIdsForLayer(allInteractiveIds, capaActiva), ...activeAreaIds])),
+    () =>
+      Array.from(
+        new Set([
+          ...getIdsForLayer(allInteractiveIds, capaActiva),
+          ...(capaActiva === "internet"
+            ? activeAreaIds.filter(isInternetAreaAllowed)
+            : activeAreaIds),
+        ]),
+      ),
     [activeAreaIds, allInteractiveIds, capaActiva],
   );
 
@@ -108,6 +155,42 @@ export function PlantaSvg({
   useEffect(() => {
     onIdsChange?.(interactiveIds);
   }, [interactiveIds, onIdsChange]);
+
+  useEffect(() => {
+    if (capaActiva !== "internet") {
+      return;
+    }
+
+    let isMounted = true;
+
+    const syncNetworkStatus = async () => {
+      try {
+        const response = await fetch("/api/network-status/current", {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as { signals?: Record<string, NetworkSignalQuality> };
+
+        if (isMounted && payload.signals) {
+          setLiveInternetSignals(payload.signals);
+        }
+      } catch {
+        // Keep the last known state if the refresh fails.
+      }
+    };
+
+    void syncNetworkStatus();
+    const intervalId = window.setInterval(syncNetworkStatus, 30000);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+    };
+  }, [capaActiva]);
 
   useEffect(() => {
     if (!selectedId || interactiveIds.includes(selectedId)) {
@@ -135,7 +218,9 @@ export function PlantaSvg({
 
     const tokens = layerStyles[capaActiva];
     const idSet = new Set(interactiveIds);
-    const activeAreaSet = new Set(activeAreaIds);
+    const activeAreaSet = new Set(
+      capaActiva === "internet" ? activeAreaIds.filter(isInternetAreaAllowed) : activeAreaIds,
+    );
     const currentLightStates = lightStates;
     const labelLayer =
       svgRoot.querySelector<SVGGElement>("[data-generated-label-layer='true']") ??
@@ -161,15 +246,26 @@ export function PlantaSvg({
         }
 
         const isOn = currentLightStates[id] ?? true;
+        const useOpaqueLayerFill = element.getAttribute("data-opaque-layer-fill") === "true";
+        const useOpaqueLights = capaActiva === "luces";
 
         if (!isOn) {
-          element.style.opacity = "0.32";
-          element.style.fill = "rgba(239, 68, 68, 0.20)";
+          const offOpacity =
+            useOpaqueLights || useOpaqueLayerFill ? opaqueLayerFills.luces.offOpacity : "0.32";
+          element.style.opacity = offOpacity;
+          element.style.fill = useOpaqueLights || useOpaqueLayerFill
+            ? opaqueLayerFills.luces.offFill
+            : "rgba(239, 68, 68, 0.20)";
           element.style.stroke = "#dc2626";
           element.style.strokeWidth = "8px";
           element.style.filter = "";
-          element.setAttribute("opacity", "0.32");
-          element.setAttribute("fill", "rgba(239, 68, 68, 0.20)");
+          element.setAttribute("opacity", offOpacity);
+          element.setAttribute(
+            "fill",
+            useOpaqueLights || useOpaqueLayerFill
+              ? opaqueLayerFills.luces.offFill
+              : "rgba(239, 68, 68, 0.20)",
+          );
           element.setAttribute("stroke", "#dc2626");
           element.setAttribute("stroke-width", "8");
         }
@@ -180,6 +276,8 @@ export function PlantaSvg({
       const id = element.id;
       const isPcElement = isPcSvgElement(id);
       const preserveFill = element.getAttribute("data-preserve-fill") === "true";
+      const useOpaqueLayerFill = element.getAttribute("data-opaque-layer-fill") === "true";
+      const useOpaqueLights = capaActiva === "luces";
 
       element.removeAttribute("data-interactive");
       element.removeAttribute("data-selected");
@@ -208,6 +306,15 @@ export function PlantaSvg({
       }
 
       const isSelected = selectedId === id;
+      const liveSignalQuality = capaActiva === "internet" ? liveInternetSignals[id] ?? "desconectada" : null;
+      const internetSignalStyles =
+        capaActiva === "internet"
+          ? getInternetSignalStylesFromQuality(
+              liveSignalQuality,
+              isSelected,
+              isPcElement,
+            )
+          : null;
 
       element.setAttribute("data-interactive", "true");
       if (isSelected) {
@@ -215,39 +322,83 @@ export function PlantaSvg({
       }
 
       element.style.cursor = "pointer";
-      element.style.opacity = isSelected ? "1" : "0.94";
-      element.setAttribute("opacity", isSelected ? "1" : "0.94");
-      if (!preserveFill || isSelected) {
-        element.style.fill = isSelected ? tokens.activeFill : tokens.idleFill;
-        element.setAttribute("fill", isSelected ? tokens.activeFill : tokens.idleFill);
+      if (!preserveFill || isSelected || useOpaqueLayerFill || useOpaqueLights) {
+        const resolvedFill = internetSignalStyles
+          ? internetSignalStyles.fill
+          : useOpaqueLayerFill && capaActiva !== "luces"
+            ? isSelected
+              ? tokens.activeFill
+              : tokens.idleFill
+            : useOpaqueLayerFill
+              ? isSelected
+                ? opaqueLayerFills[capaActiva].activeFill
+                : opaqueLayerFills[capaActiva].idleFill
+              : useOpaqueLights
+                ? isSelected
+                  ? opaqueLayerFills.luces.activeFill
+                  : opaqueLayerFills.luces.idleFill
+                : isSelected
+                  ? tokens.activeFill
+                  : tokens.idleFill;
+        element.style.fill = resolvedFill;
+        element.setAttribute("fill", resolvedFill);
       }
-      element.style.stroke = isSelected ? tokens.activeStroke : tokens.idleStroke;
+      const resolvedOpacity = useOpaqueLayerFill && capaActiva !== "luces"
+        ? isSelected
+          ? "1"
+          : "0.94"
+        : useOpaqueLayerFill
+        ? isSelected
+          ? "1"
+          : opaqueLayerFills[capaActiva].idleOpacity
+        : useOpaqueLights
+        ? isSelected
+          ? "1"
+          : opaqueLayerFills.luces.idleOpacity
+        : isSelected
+          ? "1"
+          : "0.94";
+      element.style.opacity = resolvedOpacity;
+      element.setAttribute("opacity", resolvedOpacity);
+      element.style.stroke = internetSignalStyles
+        ? internetSignalStyles.stroke
+        : isSelected
+          ? tokens.activeStroke
+          : tokens.idleStroke;
       element.style.strokeWidth = isSelected ? "12px" : "8px";
-      element.setAttribute("stroke", isSelected ? tokens.activeStroke : tokens.idleStroke);
+      element.setAttribute(
+        "stroke",
+        internetSignalStyles
+          ? internetSignalStyles.stroke
+          : isSelected
+            ? tokens.activeStroke
+            : tokens.idleStroke,
+      );
       element.setAttribute("stroke-width", isSelected ? "12" : "8");
       element.style.filter = isSelected ? "drop-shadow(0 0 10px rgba(34, 148, 238, 0.22))" : "";
 
-      if (
-        !isPcElement &&
-        rootMatrix &&
-        typeof (element as SVGGraphicsElement).getBBox === "function"
-      ) {
+      if (rootMatrix && typeof (element as SVGGraphicsElement).getBBox === "function") {
         try {
           const bbox = (element as SVGGraphicsElement).getBBox();
           const rect = (element as SVGGraphicsElement).getBoundingClientRect();
 
-          if (bbox.width > 0 && bbox.height > 0 && rect.width > 24 && rect.height > 24) {
+          const pcShortLabel = capaActiva === "internet" && isPcElement ? getPcShortLabel(id) : null;
+          const canRenderAreaLabel = !isPcElement && rect.width > 24 && rect.height > 24;
+          const canRenderPcLabel = Boolean(pcShortLabel) && rect.width > 8 && rect.height > 8;
+
+          if (bbox.width > 0 && bbox.height > 0 && (canRenderAreaLabel || canRenderPcLabel)) {
             rootPoint.x = rect.left + rect.width / 2;
             rootPoint.y = rect.top + rect.height / 2;
             const centerPoint = rootPoint.matrixTransform(rootMatrix.inverse());
 
             const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            const labelLines = splitSvgElementLabelLines(id);
-            const fontSize =
-              ala === "oeste"
-                ? Math.max(18, Math.min(44, bbox.width / 10))
+            const labelLines = pcShortLabel ? [pcShortLabel] : splitSvgElementLabelLines(id);
+            const fontSize = pcShortLabel
+              ? Math.max(48, Math.min(76, Math.max(bbox.width, bbox.height) * 4.4))
+              : ala === "oeste"
+                ? Math.max(12, Math.min(26, bbox.width / 15))
                 : Math.max(42, Math.min(96, bbox.width / 7));
-            const lineHeight = fontSize * 0.9;
+            const lineHeight = pcShortLabel ? fontSize : fontSize * 0.9;
             const startOffset = -((labelLines.length - 1) * lineHeight) / 2;
 
             text.setAttribute("data-generated-label", "true");
@@ -259,7 +410,7 @@ export function PlantaSvg({
             text.setAttribute("fill", "#173863");
             text.setAttribute("paint-order", "stroke");
             text.setAttribute("stroke", "rgba(255,255,255,0.95)");
-            text.setAttribute("stroke-width", "14");
+            text.setAttribute("stroke-width", pcShortLabel ? "10" : "8");
             text.style.pointerEvents = "none";
 
             labelLines.forEach((line, index) => {
@@ -279,7 +430,7 @@ export function PlantaSvg({
     });
 
     applyLightStates();
-  }, [capaActiva, interactiveIds, lightAreaIds, lightStates, pathname, renderedSvgMarkup, selectedId]);
+  }, [capaActiva, interactiveIds, lightAreaIds, lightStates, liveInternetSignals, pathname, renderedSvgMarkup, selectedId]);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
@@ -311,4 +462,84 @@ export function PlantaSvg({
       </div>
     </div>
   );
+}
+
+function getInternetSignalStylesFromQuality(
+  quality: NetworkSignalQuality,
+  isSelected: boolean,
+  isPcElement: boolean,
+) {
+  if (quality === "desconectada") {
+    return {
+      fill: isPcElement
+        ? isSelected
+          ? "#6b7280"
+          : "#9ca3af"
+        : isSelected
+          ? "#d1d5db"
+          : "#e5e7eb",
+      stroke: isPcElement
+        ? isSelected
+          ? "#4b5563"
+          : "#6b7280"
+        : isSelected
+          ? "#9ca3af"
+          : "#cbd5e1",
+    };
+  }
+
+  if (quality === "buena") {
+    return {
+      fill: isPcElement
+        ? isSelected
+          ? "#16a34a"
+          : "#22c55e"
+        : isSelected
+          ? "#86efac"
+          : "#bbf7d0",
+      stroke: isPcElement
+        ? isSelected
+          ? "#166534"
+          : "#15803d"
+        : isSelected
+          ? "#16a34a"
+          : "#22c55e",
+    };
+  }
+
+  if (quality === "regular") {
+    return {
+      fill: isPcElement
+        ? isSelected
+          ? "#eab308"
+          : "#facc15"
+        : isSelected
+          ? "#fde68a"
+          : "#fef3c7",
+      stroke: isPcElement
+        ? isSelected
+          ? "#a16207"
+          : "#ca8a04"
+        : isSelected
+          ? "#d97706"
+          : "#f59e0b",
+    };
+  }
+
+  return {
+    fill: isPcElement
+      ? isSelected
+        ? "#dc2626"
+        : "#ef4444"
+      : isSelected
+        ? "#fca5a5"
+        : "#fecaca",
+    stroke: isPcElement
+      ? isSelected
+        ? "#991b1b"
+        : "#b91c1c"
+      : isSelected
+        ? "#dc2626"
+        : "#ef4444",
+  };
 }

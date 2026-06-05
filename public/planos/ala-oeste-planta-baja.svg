@@ -25,7 +25,7 @@ viewBox="0 0 1586.91 855.06"
   <rect id="baños_adaptados_pb_oeste" class="fil0 str0" transform="matrix(0 -4.37923E-001 1.07512 0 1281.36 489.782)" width="283.63" height="283.63"/>
   <rect id="baños_hombres_pb_oeste" class="fil0 str0" transform="matrix(0 -6.45601E-001 1.07512 0 1281.36 184.992)" width="283.63" height="283.63"/>
   <rect id="baños_mujeres_pb_oeste" class="fil0 str0" transform="matrix(0 -6.36662E-001 1.07512 0 1281.36 365.571)" width="283.63" height="283.63"/>
-  <rect id="recepcion_pb_oeste" class="fil0" transform="matrix(0 -1.66769E+000 -9.72819E-001 0 427.526 854.443)" width="438.84" height="438.84"/>
-  <polygon id="pasillos_pb_oeste" class="fil0" points="1281.36,427.53 1281.36,365.57 1281.36,364.3 1281.36,184.99 1281.36,1.88 1216.43,1.88 1216.43,183.72 1216.43,364.3 1216.43,365.57 789.52,365.57 552.65,365.57 552.65,213.1 789.52,213.1 789.52,122.59 427.53,122.59 427.53,488.51 793.45,488.51 793.45,427.53 "/>
+  <rect id="recepcion_pb_oeste" class="fil0" data-kind="area" data-active-area="true" transform="matrix(0 -1.66769E+000 -9.72819E-001 0 427.526 854.443)" width="438.84" height="438.84"/>
+  <polygon id="pasillos_pb_oeste" class="fil0" data-kind="area" data-active-area="true" points="1281.36,427.53 1281.36,365.57 1281.36,364.3 1281.36,184.99 1281.36,1.88 1216.43,1.88 1216.43,183.72 1216.43,364.3 1216.43,365.57 789.52,365.57 552.65,365.57 552.65,213.1 789.52,213.1 789.52,122.59 427.53,122.59 427.53,488.51 793.45,488.51 793.45,427.53 "/>
  </g>
 </svg>

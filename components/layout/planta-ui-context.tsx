@@ -6,6 +6,7 @@ type PlantaUiContextValue = {
   currentPlantKey: string | null;
   currentInteractiveIds: string[];
   lightAreaIds: string[];
+  lightAreaMap: Record<string, string[]>;
   lightStates: Record<string, boolean>;
   setCurrentInteractiveIds: (plantKey: string, ids: string[]) => void;
   setCurrentPlantLightAreas: (plantKey: string, areaIds: string[]) => void;
@@ -22,6 +23,7 @@ export function PlantaUiProvider({ children }: { children: React.ReactNode }) {
   const [currentPlantKey, setCurrentPlantKey] = useState<string | null>(null);
   const [currentInteractiveIds, setCurrentInteractiveIdsState] = useState<string[]>([]);
   const [lightAreaIds, setLightAreaIds] = useState<string[]>([]);
+  const [lightAreaMap, setLightAreaMap] = useState<Record<string, string[]>>({});
   const [lightStates, setLightStates] = useState<Record<string, boolean>>({});
 
   const setCurrentInteractiveIds = useCallback((plantKey: string, ids: string[]) => {
@@ -32,6 +34,10 @@ export function PlantaUiProvider({ children }: { children: React.ReactNode }) {
   const setCurrentPlantLightAreas = useCallback((plantKey: string, areaIds: string[]) => {
     setCurrentPlantKey(plantKey);
     setLightAreaIds(areaIds);
+    setLightAreaMap((current) => ({
+      ...current,
+      [plantKey]: areaIds,
+    }));
     setLightStates((current) =>
       Object.fromEntries(areaIds.map((id) => [id, current[id] ?? true])) as Record<string, boolean>,
     );
@@ -53,6 +59,7 @@ export function PlantaUiProvider({ children }: { children: React.ReactNode }) {
       currentPlantKey,
       currentInteractiveIds,
       lightAreaIds,
+      lightAreaMap,
       lightStates,
       setCurrentInteractiveIds,
       setCurrentPlantLightAreas,
@@ -62,6 +69,7 @@ export function PlantaUiProvider({ children }: { children: React.ReactNode }) {
       currentInteractiveIds,
       currentPlantKey,
       lightAreaIds,
+      lightAreaMap,
       lightStates,
       setCurrentInteractiveIds,
       setCurrentPlantLightAreas,

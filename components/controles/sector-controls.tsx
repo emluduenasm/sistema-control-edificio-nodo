@@ -51,7 +51,7 @@ export function SectorControls({
         <div className="flex h-full min-h-0 flex-col rounded-[20px] border border-border/80 bg-[#fbfeff] p-4 shadow-panel">
           <p className="text-sm font-medium text-[#6a88a5]">Interaccion principal</p>
           <div className="mt-3 flex min-h-0 flex-1 flex-col overflow-hidden">
-            <div className="grid min-h-0 gap-2 overflow-auto pr-1 md:grid-cols-3 xl:grid-cols-5">
+            <div className="grid min-h-0 gap-2 overflow-auto pr-1 md:grid-cols-3 xl:grid-cols-3">
               {(isHydrated ? lightAreaGroups : []).map((group) => {
                 const isOn = group.ids.every((id) => lightStates[id] ?? true);
 
@@ -64,7 +64,13 @@ export function SectorControls({
                       <p className="truncate text-sm font-semibold text-[#173863]">
                         {group.label}
                       </p>
-                      <p className="mt-0.5 text-[11px] font-medium uppercase tracking-[0.12em] text-[#7b93ab]">
+                      <p
+                        className={`mt-1 inline-flex rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.12em] ${
+                          isOn
+                            ? "bg-emerald-100 text-emerald-700"
+                            : "bg-rose-100 text-rose-700"
+                        }`}
+                      >
                         {isOn ? "Encendida" : "Apagada"}
                       </p>
                     </div>
@@ -159,7 +165,7 @@ export function SectorControls({
 function getLightAreaGroups(lightAreaIds: string[]) {
   const groups: LightAreaGroup[] = [];
   const plantaBajaEsteGroupedIds = lightAreaIds.filter((id) =>
-    /^(sanitarios_(mujeres|hombres|adaptados)|ba.*os_(mujeres|hombres|adaptados)|bedelia|sala_profes)_pb_este$/i.test(
+    /^(sanitarios_(mujeres|hombres|adaptados)|ba.*os_(mujeres|hombres|adaptados)|bedelia|sala_profes|pasillos)_pb_este$/i.test(
       id,
     ),
   );
@@ -167,7 +173,31 @@ function getLightAreaGroups(lightAreaIds: string[]) {
   if (plantaBajaEsteGroupedIds.length > 0) {
     groups.push({
       ids: plantaBajaEsteGroupedIds,
-      label: "Banos, bedelia y sala profes",
+      label: "Baños, bedelia y sala profes",
+    });
+  }
+
+  const plantaBajaOesteGroupedIds = lightAreaIds.filter((id) =>
+    /^(ba.*os_(mujeres|hombres|adaptados)|deposito_laboratorio|cocina|pasillos)_pb_oeste$/i.test(
+      id,
+    ),
+  );
+
+  if (plantaBajaOesteGroupedIds.length > 0) {
+    groups.push({
+      ids: plantaBajaOesteGroupedIds,
+      label: "Baños y depósitos",
+    });
+  }
+
+  const plantaBajaOesteLaboratorioIds = lightAreaIds.filter((id) =>
+    /^(laboratorio|oficina_policia)_pb_oeste$/i.test(id),
+  );
+
+  if (plantaBajaOesteLaboratorioIds.length > 0) {
+    groups.push({
+      ids: plantaBajaOesteLaboratorioIds,
+      label: "Laboratorio y oficina policia",
     });
   }
 
@@ -178,7 +208,29 @@ function getLightAreaGroups(lightAreaIds: string[]) {
   if (entrePisoEsteGroupedIds.length > 0) {
     groups.push({
       ids: entrePisoEsteGroupedIds,
-      label: "Banos, deposito y sala maquinas",
+      label: "Baños, depósito y sala máquinas",
+    });
+  }
+
+  const entrePisoOesteServiciosIds = lightAreaIds.filter((id) =>
+    /^(ba.*os_(mujeres|hombres)|sala_de_maquinas)_ep_oeste$/i.test(id),
+  );
+
+  if (entrePisoOesteServiciosIds.length > 0) {
+    groups.push({
+      ids: entrePisoOesteServiciosIds,
+      label: "Baños y sala máquinas",
+    });
+  }
+
+  const entrePisoOesteOficinasIds = lightAreaIds.filter((id) =>
+    /^(oficina_zamboni|oficina_modernizacion|oficina_desarrolladores|pasillos)_ep_oeste$/i.test(id),
+  );
+
+  if (entrePisoOesteOficinasIds.length > 0) {
+    groups.push({
+      ids: entrePisoOesteOficinasIds,
+      label: "Oficinas y pasillos",
     });
   }
 
@@ -189,15 +241,31 @@ function getLightAreaGroups(lightAreaIds: string[]) {
   if (plantaAltaEsteGroupedIds.length > 0) {
     groups.push({
       ids: plantaAltaEsteGroupedIds,
-      label: "Oficinas, banos y aulas",
+      label: "Oficinas, baños y aulas",
+    });
+  }
+
+  const plantaAltaOesteGroupedIds = lightAreaIds.filter(
+    (id) => id.endsWith("_pa_oeste") && !/^(pasillos|puente)_pa_oeste$/i.test(id),
+  );
+
+  if (plantaAltaOesteGroupedIds.length > 0) {
+    groups.push({
+      ids: plantaAltaOesteGroupedIds,
+      label: "Oficinas, baños y recepción",
     });
   }
 
   lightAreaIds.forEach((id) => {
     if (
       plantaBajaEsteGroupedIds.includes(id) ||
+      plantaBajaOesteGroupedIds.includes(id) ||
+      plantaBajaOesteLaboratorioIds.includes(id) ||
       entrePisoEsteGroupedIds.includes(id) ||
-      plantaAltaEsteGroupedIds.includes(id)
+      entrePisoOesteServiciosIds.includes(id) ||
+      entrePisoOesteOficinasIds.includes(id) ||
+      plantaAltaEsteGroupedIds.includes(id) ||
+      plantaAltaOesteGroupedIds.includes(id)
     ) {
       return;
     }

@@ -21,13 +21,13 @@ viewBox="0 0 2072.4 994.53"
   <rect id="baños_oficina_intendente_pa_oeste" class="fil0 str0" transform="matrix(0 -2.80804E-001 0.310909 0 1716.48 567.565)" width="1142.48" height="1142.48"/>
   <rect id="oficina_intendente_pa_oeste" class="fil0 str0" transform="matrix(0 -6.5389E-001 0.497455 0 1148.15 993.807)" width="1142.48" height="1142.48"/>
   <rect id="ascensor_pa_oeste" class="fil1 str0" transform="matrix(0 -2.25092E-001 0.275922 0 930.44 424.356)" width="789.02" height="789.02"/>
-  <rect id="recepcion_intendencia_pa_oeste" class="fil0 str0" transform="matrix(0 -7.44705E-001 1.07512 0 1716.48 246.753)" width="330.39" height="330.39"/>
+  <rect id="recepcion_intendencia_pa_oeste" class="fil0 str0" data-kind="area" data-active-area="true" transform="matrix(0 -7.44705E-001 1.07512 0 1716.48 246.753)" width="330.39" height="330.39"/>
   <rect id="oficina2_secretaria_pa_oeste" class="fil0 str0" transform="matrix(0 -4.50184E-001 0.270111 0 224.612 993.816)" width="789.02" height="789.02"/>
   <rect id="oficina3_secretaria_pa_oeste" class="fil0 str0" transform="matrix(0 -4.50184E-001 0.540221 0 437.736 993.807)" width="789.02" height="789.02"/>
   <rect id="sala_de_reuniones_pa_oeste" class="fil0 str0" transform="matrix(0 -7.20295E-001 0.360148 0 863.984 993.816)" width="789.02" height="789.02"/>
   <rect id="oficina1_secretaria_pa_oeste" class="fil0 str0" transform="matrix(0 -4.50184E-001 0.270111 0 437.736 496.518)" width="789.02" height="789.02"/>
   <rect id="oficina_sarmiento_pa_oeste" class="fil0 str0" transform="matrix(0 -4.50184E-001 0.270111 0 224.612 496.518)" width="789.02" height="789.02"/>
-  <rect id="puente_pa_oeste" class="fil0 str0" x="0.71" y="496.52" width="223.9" height="142.08"/>
-  <polygon id="pasillos_pa_oeste" class="fil2 str0" points="930.44,246.75 930.44,424.36 863.98,425.49 863.98,638.6 437.74,638.6 437.74,638.61 224.61,638.61 224.61,496.52 437.74,496.52 650.86,496.52 650.86,141.32 721.9,141.32 1143.56,141.32 1143.56,0.71 1716.48,0.71 1716.48,246.75 1148.15,246.75 "/>
+  <rect id="puente_pa_oeste" class="fil0 str0" data-kind="area" data-active-area="true" x="0.71" y="496.52" width="223.9" height="142.08"/>
+  <polygon id="pasillos_pa_oeste" class="fil2 str0" data-kind="area" data-active-area="true" points="930.44,246.75 930.44,424.36 863.98,425.49 863.98,638.6 437.74,638.6 437.74,638.61 224.61,638.61 224.61,496.52 437.74,496.52 650.86,496.52 650.86,141.32 721.9,141.32 1143.56,141.32 1143.56,0.71 1716.48,0.71 1716.48,246.75 1148.15,246.75 "/>
  </g>
 </svg>

@@ -1,26 +1,36 @@
 "use client";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 
 import { LayerSelector } from "@/components/capas/layer-selector";
 import { AireControls } from "@/components/controles/aire-controls";
 import { InternetSummary } from "@/components/controles/internet-summary";
-import { LucesControls } from "@/components/controles/luces-controls";
+import { LucesControls, type LightControlGroup } from "@/components/controles/luces-controls";
 import { usePlantaUi } from "@/components/layout/planta-ui-context";
 import { PlantaMasterControls } from "@/components/controles/planta-master-controls";
 import { SectorControls } from "@/components/controles/sector-controls";
-import { isCapaActiva } from "@/lib/svg/planta-map";
-import type { CapaActiva } from "@/types/building";
+import { isAla, isCapaActiva, plantas } from "@/lib/svg/planta-map";
+import { formatLabel } from "@/lib/utils/format";
+import type { Ala, CapaActiva } from "@/types/building";
 
 export function BottomPanel() {
   const params = useParams<{ ala?: string; planta?: string }>();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const capaParam = searchParams.get("capa");
+  const alaParam = searchParams.get("ala");
   const selectedId = searchParams.get("sector");
   const capaActiva: CapaActiva = isCapaActiva(capaParam) ? capaParam : "luces";
   const isPlantRoute = typeof params?.ala === "string" && typeof params?.planta === "string";
-  const { lightAreaIds, lightStates, setCurrentPlantLightStates } = usePlantaUi();
-  const visibleLightAreaIds = isPlantRoute ? lightAreaIds : [];
+  const isInteriorOverview = pathname === "/interior";
+  const overviewAla: Ala | null = isAla(alaParam) ? alaParam : null;
+  const { lightAreaIds, lightAreaMap, lightStates, setCurrentPlantLightStates } = usePlantaUi();
+  const overviewLightGroups = getOverviewLightGroups(lightAreaMap, overviewAla);
+  const visibleLightAreaIds = isPlantRoute
+    ? lightAreaIds
+    : isInteriorOverview
+      ? getVisibleOverviewLightIds(overviewLightGroups)
+      : [];
   const visibleLightStates = lightStates;
 
   const turnAllOn = () => {
@@ -36,6 +46,17 @@ export function BottomPanel() {
   };
 
   const toggleLight = (ids: string[]) => {
+    setCurrentPlantLightStates((current) => {
+      const nextValue = !ids.every((id) => current[id] ?? true);
+
+      return {
+        ...current,
+        ...Object.fromEntries(ids.map((id) => [id, nextValue])),
+      };
+    });
+  };
+
+  const toggleOverviewGroup = (ids: string[]) => {
     setCurrentPlantLightStates((current) => {
       const nextValue = !ids.every((id) => current[id] ?? true);
 
@@ -69,7 +90,13 @@ export function BottomPanel() {
             />
           ) : (
             <>
-              {capaActiva === "luces" && <LucesControls />}
+              {capaActiva === "luces" && (
+                <LucesControls
+                  groups={isInteriorOverview ? overviewLightGroups : []}
+                  lightStates={visibleLightStates}
+                  onToggleGroup={toggleOverviewGroup}
+                />
+              )}
               {capaActiva === "aire" && <AireControls />}
               {capaActiva === "internet" && <InternetSummary />}
             </>
@@ -78,4 +105,54 @@ export function BottomPanel() {
       </div>
     </footer>
   );
+}
+
+function getOverviewLightGroups(lightAreaMap: Record<string, string[]>, overviewAla: Ala | null) {
+  const entries = Object.entries(lightAreaMap).filter(([, ids]) => ids.length > 0);
+
+  if (entries.length === 0) {
+    return [];
+  }
+
+  if (!overviewAla) {
+    const wingGroups = (["este", "oeste"] as const)
+      .map((ala) => {
+        const ids = entries
+          .filter(([plantKey]) => plantKey.startsWith(`${ala}:`))
+          .flatMap(([, areaIds]) => areaIds);
+
+        return ids.length > 0
+          ? {
+              ids,
+              key: `ala:${ala}`,
+              label: `Ala ${ala}`,
+              detail: "",
+            }
+          : null;
+      })
+      .filter((group): group is LightControlGroup => group !== null);
+
+    return wingGroups;
+  }
+
+  const plantGroups = plantas
+    .map((planta) => {
+      const ids = lightAreaMap[`${overviewAla}:${planta}`] ?? [];
+
+      return ids.length > 0
+        ? {
+            ids,
+            key: `${overviewAla}:${planta}`,
+            label: formatLabel(planta),
+            detail: "",
+          }
+        : null;
+    })
+    .filter((group): group is LightControlGroup => group !== null);
+
+  return plantGroups;
+}
+
+function getVisibleOverviewLightIds(groups: LightControlGroup[]) {
+  return Array.from(new Set(groups.flatMap((group) => group.ids)));
 }
