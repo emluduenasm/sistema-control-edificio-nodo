@@ -23,6 +23,7 @@ export default async function InteriorPage() {
           ala,
           areaIds,
           planta,
+          svgMarkup,
         };
       }),
     ),

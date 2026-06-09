@@ -4,7 +4,7 @@ export const alas: Ala[] = ["este", "oeste"];
 
 export const plantas: Planta[] = ["planta-baja", "entre-piso", "planta-alta", "sub-suelo"];
 
-export const capasActivas: CapaActiva[] = ["luces", "aire", "internet"];
+export const capasActivas: CapaActiva[] = ["luces", "internet", "aire"];
 
 export const plantaSvgMap: Record<Ala, Record<Planta, string>> = {
   este: {

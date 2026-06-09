@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 
 import { LayerSelector } from "@/components/capas/layer-selector";
@@ -14,6 +15,7 @@ import { formatLabel } from "@/lib/utils/format";
 import type { Ala, CapaActiva } from "@/types/building";
 
 export function BottomPanel() {
+  const [isHydrated, setIsHydrated] = useState(false);
   const params = useParams<{ ala?: string; planta?: string }>();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -26,12 +28,18 @@ export function BottomPanel() {
   const overviewAla: Ala | null = isAla(alaParam) ? alaParam : null;
   const { lightAreaIds, lightAreaMap, lightStates, setCurrentPlantLightStates } = usePlantaUi();
   const overviewLightGroups = getOverviewLightGroups(lightAreaMap, overviewAla);
+  const visibleOverviewLightGroups =
+    isInteriorOverview && capaActiva === "luces" && !isHydrated ? [] : overviewLightGroups;
   const visibleLightAreaIds = isPlantRoute
     ? lightAreaIds
     : isInteriorOverview
-      ? getVisibleOverviewLightIds(overviewLightGroups)
+      ? getVisibleOverviewLightIds(visibleOverviewLightGroups)
       : [];
   const visibleLightStates = lightStates;
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const turnAllOn = () => {
     setCurrentPlantLightStates(
@@ -69,18 +77,28 @@ export function BottomPanel() {
 
   return (
     <footer className="border-t border-border/80 bg-white/95 px-6 py-4 backdrop-blur">
-      <div className="grid h-full min-h-0 grid-cols-[120px_280px_1fr] gap-5">
+      <div
+        className={`grid h-full min-h-0 gap-5 ${
+          capaActiva === "luces"
+            ? "grid-cols-[120px_220px_1fr]"
+            : capaActiva === "internet"
+              ? "grid-cols-[120px_1fr]"
+              : "grid-cols-[120px_280px_1fr]"
+        }`}
+      >
         <div className="flex justify-start">
           <LayerSelector />
         </div>
-        <PlantaMasterControls
-          capaActiva={capaActiva}
-          selectedId={selectedId}
-          onTurnAllOn={capaActiva === "luces" ? turnAllOn : undefined}
-          onTurnAllOff={capaActiva === "luces" ? turnAllOff : undefined}
-        />
+        {capaActiva !== "internet" ? (
+          <PlantaMasterControls
+            capaActiva={capaActiva}
+            selectedId={selectedId}
+            onTurnAllOn={capaActiva === "luces" ? turnAllOn : undefined}
+            onTurnAllOff={capaActiva === "luces" ? turnAllOff : undefined}
+          />
+        ) : null}
         <div className="min-h-0">
-          {isPlantRoute ? (
+          {isPlantRoute && capaActiva !== "internet" ? (
             <SectorControls
               capaActiva={capaActiva}
               selectedId={selectedId}
@@ -92,13 +110,13 @@ export function BottomPanel() {
             <>
               {capaActiva === "luces" && (
                 <LucesControls
-                  groups={isInteriorOverview ? overviewLightGroups : []}
+                  groups={isInteriorOverview ? visibleOverviewLightGroups : []}
                   lightStates={visibleLightStates}
                   onToggleGroup={toggleOverviewGroup}
                 />
               )}
               {capaActiva === "aire" && <AireControls />}
-              {capaActiva === "internet" && <InternetSummary />}
+              {capaActiva === "internet" && <InternetSummary selectedId={selectedId} />}
             </>
           )}
         </div>

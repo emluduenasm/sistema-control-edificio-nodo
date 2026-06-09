@@ -12,8 +12,7 @@ import {
 
 const accesos = [
   { href: "/interior", label: "Interior", description: "Planos por ala, planta y capa activa." },
-  { href: "/exterior", label: "Exterior", description: "Vista preparada para perimetro y servicios externos." },
-  { href: "/metricas", label: "Metricas", description: "Panel inicial para consumos, ambiente y conectividad." },
+  { href: "/exterior", label: "Exterior", description: "Vista de fachada frontal." },
 ];
 
 export default function DashboardPage() {
@@ -32,7 +31,7 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2">
         {accesos.map((acceso) => (
           <Card
             key={acceso.href}

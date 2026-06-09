@@ -1,6 +1,5 @@
 export const dashboardNavItems = [
-  { href: "/", label: "Dashboard" },
+  { href: "/", label: "Inicio" },
   { href: "/interior", label: "Interior" },
   { href: "/exterior", label: "Exterior" },
-  { href: "/metricas", label: "Metricas" },
 ];

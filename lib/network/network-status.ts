@@ -1,18 +1,36 @@
 export type NetworkSignalQuality = "buena" | "regular" | "mala" | "desconectada";
 
-type RemoteNetworkStatusItem = {
+export type RemoteNetworkStatusItem = {
   ala_codigo?: string | null;
+  ala_nombre?: string | null;
   calidad_senal?: number | null;
   conectada?: boolean | null;
   equipo_id?: string | null;
   equipo_descripcion?: string | null;
   estado_general?: string | null;
   hostname?: string | null;
+  ip_local?: string | null;
+  gateway?: string | null;
+  last_sample_time?: string | null;
+  latencia_gateway_ms?: number | null;
+  latencia_internet_ms?: number | null;
+  nombre_interfaz?: string | null;
+  perdida_gateway_pct?: number | null;
+  perdida_internet_pct?: number | null;
   planta_codigo?: string | null;
+  planta_nombre?: string | null;
+  rssi?: number | null;
+  score_salud?: number | null;
+  sector?: string | null;
+  ssid?: string | null;
+  tipo_conexion?: string | null;
+  updated_at?: string | null;
+  ubicacion_id?: number | null;
   ubicacion_nombre?: string | null;
 };
 
 export type NormalizedNetworkStatusResponse = {
+  items: RemoteNetworkStatusItem[];
   signals: Record<string, NetworkSignalQuality>;
   updatedAt: string | null;
 };
@@ -66,9 +84,48 @@ export function normalizeNetworkStatusPayload(payload: unknown): NormalizedNetwo
   }
 
   return {
+    items,
     signals,
     updatedAt,
   };
+}
+
+export function mapNetworkItemToSvgPcId(item: RemoteNetworkStatusItem) {
+  const aulaNumber = getAulaNumber(item.ubicacion_nombre);
+  const pcNumber = getPcNumber(item.hostname, item.equipo_descripcion);
+  const specialPcId = getSpecialSvgPcId(item.equipo_id);
+
+  if (specialPcId) {
+    return specialPcId;
+  }
+
+  if (pcNumber && aulaNumber) {
+    return `pc${pcNumber}_aula${aulaNumber}`;
+  }
+
+  return null;
+}
+
+export function mapNetworkItemToSvgAreaId(item: RemoteNetworkStatusItem) {
+  const ala = mapWingCodeToSlug(item.ala_codigo);
+  const planta = mapFloorCodeToSlug(item.planta_codigo);
+
+  if (!ala || !planta) {
+    return null;
+  }
+
+  const aulaNumber = getAulaNumber(item.ubicacion_nombre);
+  if (aulaNumber) {
+    return `aula${aulaNumber}_${planta}_${ala}`;
+  }
+
+  const locationSlug = slugifyLocation(item.ubicacion_nombre ?? item.sector ?? item.equipo_descripcion ?? "");
+
+  if (!locationSlug) {
+    return null;
+  }
+
+  return `${locationSlug}_${planta}_${ala}`;
 }
 
 function getItems(payload: unknown): RemoteNetworkStatusItem[] {
@@ -148,4 +205,45 @@ function getSpecialSvgPcId(equipoId?: string | null) {
   }
 
   return null;
+}
+
+function mapWingCodeToSlug(alaCodigo?: string | null) {
+  if (alaCodigo === "AE") {
+    return "este";
+  }
+
+  if (alaCodigo === "AO") {
+    return "oeste";
+  }
+
+  return null;
+}
+
+function mapFloorCodeToSlug(plantaCodigo?: string | null) {
+  if (plantaCodigo === "PB") {
+    return "pb";
+  }
+
+  if (plantaCodigo === "EP") {
+    return "ep";
+  }
+
+  if (plantaCodigo === "PA") {
+    return "pa";
+  }
+
+  if (plantaCodigo === "SS") {
+    return "ss";
+  }
+
+  return null;
+}
+
+function slugifyLocation(value: string) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
 }
